@@ -1,0 +1,64 @@
+# Costruisce il sito con Hugo e lo pubblica su GitHub Pages
+# a ogni push sul branch main.
+name: Deploy Hugo su GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # permette di avviarlo a mano dalla scheda Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Se arrivano più push ravvicinati, pubblica solo l'ultimo
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  HUGO_VERSION: 0.160.1 # stessa versione usata in locale
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scarica il codice
+        uses: actions/checkout@v4
+
+      # Go serve a Hugo per scaricare il tema Congo (Hugo Modules)
+      - name: Installa Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: false
+
+      - name: Installa Hugo Extended
+        run: |
+          wget -q -O hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i hugo.deb
+          rm hugo.deb
+
+      - name: Configura GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Genera il sito
+        run: hugo --minify --gc --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Carica il sito generato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Pubblica su GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

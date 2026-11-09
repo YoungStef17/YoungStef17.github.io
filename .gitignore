@@ -1,0 +1,8 @@
+# Output generato da Hugo
+public/
+resources/_gen/
+.hugo_build.lock
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
