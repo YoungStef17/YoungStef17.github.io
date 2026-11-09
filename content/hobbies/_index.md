@@ -1,5 +1,5 @@
 +++
-title = "I miei Hobby 📸"
+title = "I miei Hobby 🏔️"
 description = "Cosa faccio quando non sto compilando codice."
 +++
 

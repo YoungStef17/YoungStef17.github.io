@@ -1,9 +1,9 @@
-languageCode = "en"
-languageName = "English"
+languageCode = "it"
+languageName = "Italiano"
 languageDirection = "ltr"
 weight = 1
 
-title = "Stefano Michelini - Personal Website"
+title = "Stefano Michelini"
 # copyright = "Copy, _right?_ :thinking_face:"
 
 [params]
@@ -15,8 +15,8 @@ title = "Stefano Michelini - Personal Website"
 [params.author]
    name = "Stefano Michelini"
    image = "img/author.jpg"
-   headline = "Computer Engineering Student @ Polito"
-   bio = "Appassionato di Cloud Computing, Kubernetes e sistemi distribuiti. Lavoro su progetti come Liqo e CrownLabs."
+   headline = "Studente di Ingegneria Informatica al Politecnico di Torino"
+   bio = "Appassionato di Cloud Computing, Kubernetes e sistemi distribuiti."
    links = [
   #   { email = "mailto:hello@your_domain.com" },
   #   { link = "https://link-to-some-website.com/" },

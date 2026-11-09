@@ -1,9 +1,0 @@
-[[main]]
-  name = "Home"
-  pageRef = "/"
-  weight = 10
-
-[[main]]
-  name = "Articoli"
-  pageRef = "posts"
-  weight = 20

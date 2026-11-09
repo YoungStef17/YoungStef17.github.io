@@ -1,0 +1,12 @@
+# Menu principale, in alto a destra in ogni pagina.
+# Le voci sono ordinate per weight, dal più basso al più alto.
+
+[[main]]
+  name = "Studi"
+  pageRef = "studies"
+  weight = 10
+
+[[main]]
+  name = "Hobby"
+  pageRef = "hobbies"
+  weight = 20
