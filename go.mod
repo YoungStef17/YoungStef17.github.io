@@ -1,4 +1,4 @@
-module github.com/YoungStef17/Mywebsite.git
+module github.com/YoungStef17/YoungStef17.github.io
 
 go 1.26.2
 
